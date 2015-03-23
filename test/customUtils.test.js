@@ -47,6 +47,13 @@ describe('customUtils', function () {
     });
 
     it('Correctly parses CSV data', function () {
+      var data = "firstName;lastName;age\nLouis;Chatriot;30\nAnother;One;47"
+        , parsedData = customUtils.parseCSVData(data)
+        ;
+
+      parsedData.length.should.equal(2);
+      assert.deepEqual(parsedData[0], { firstName: 'Louis', lastName: 'Chatriot', age: '30' });
+      assert.deepEqual(parsedData[1], { firstName: 'Another', lastName: 'One', age: '47' });
 
     });
 
