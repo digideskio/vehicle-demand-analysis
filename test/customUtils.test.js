@@ -58,6 +58,13 @@ describe('customUtils', function () {
     });
 
     it('No or empty field will yield an empty datum', function () {
+      var data = "firstName;lastName;age\nLouis;Chatriot\nAnother;;47"
+        , parsedData = customUtils.parseCSVData(data)
+        ;
+
+      parsedData.length.should.equal(2);
+      assert.deepEqual(parsedData[0], { firstName: 'Louis', lastName: 'Chatriot' });
+      assert.deepEqual(parsedData[1], { firstName: 'Another', lastName: '', age: '47' });
 
     });
 
