@@ -40,7 +40,7 @@ describe('customUtils', function () {
 
 
     it('No data yields empty array', function () {
-
+      customUtils.parseCSVData(undefined).length.should.equal(0);
     });
 
     it('No or empty field will yield an empty datum', function () {
