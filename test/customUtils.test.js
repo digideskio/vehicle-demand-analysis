@@ -54,7 +54,6 @@ describe('customUtils', function () {
       parsedData.length.should.equal(2);
       assert.deepEqual(parsedData[0], { firstName: 'Louis', lastName: 'Chatriot', age: '30' });
       assert.deepEqual(parsedData[1], { firstName: 'Another', lastName: 'One', age: '47' });
-
     });
 
     it('No or empty field will yield an empty datum', function () {
@@ -65,7 +64,16 @@ describe('customUtils', function () {
       parsedData.length.should.equal(2);
       assert.deepEqual(parsedData[0], { firstName: 'Louis', lastName: 'Chatriot' });
       assert.deepEqual(parsedData[1], { firstName: 'Another', lastName: '', age: '47' });
+    });
 
+    it('Can use field options functions to modify parsed data', function () {
+      var data = "asWord;asNumber\n34;23\n5;5"
+        , parsedData = customUtils.parseCSVData(data, { asNumber: function (d) { return parseInt(d, 10); } })
+        ;
+
+      parsedData.length.should.equal(2);
+      assert.deepEqual(parsedData[0], { asWord: "3" + "4", asNumber: 20 + 3 });
+      assert.deepEqual(parsedData[1], { asWord: "5", asNumber: 5 });
     });
 
 
