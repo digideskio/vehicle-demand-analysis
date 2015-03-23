@@ -7,9 +7,12 @@ var rideData = require('./lib/rideData')
 var data = fs.readFileSync('./data/example.csv', 'utf8');
 
 
-customUtils.parseCSVData(data);
+data = customUtils.parseCSVData(data, {
+  begin: function (d) { return new Date(d).getTime(); }
+, end: function (d) { return new Date(d).getTime(); }
+}, function (d) { d.duration = d.end - d.begin; return d; });
 
-
+console.log(data);
 
 
 

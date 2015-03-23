@@ -76,6 +76,19 @@ describe('customUtils', function () {
       assert.deepEqual(parsedData[1], { asWord: "5", asNumber: 5 });
     });
 
+    it('Can modify a datum as a whole', function () {
+      var data = "asN;asNumber\n34;23\n5;5"
+        , parsedData = customUtils.parseCSVData( data, { asNumber: function (d) { return parseInt(d, 10); }
+                                                       , asN: function (d) { return parseInt(d, 10); } }
+                                               , function (d) { d.another = d.asN + d.asNumber; return d; })
+        ;
+
+      parsedData.length.should.equal(2);
+      assert.deepEqual(parsedData[0], { asN: 34, asNumber: 20 + 3, another: 57 });
+      assert.deepEqual(parsedData[1], { asN: 5, asNumber: 5, another: 10 });
+      
+    });
+
 
   });
 
