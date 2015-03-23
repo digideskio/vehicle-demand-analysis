@@ -9,9 +9,17 @@
     "Louis Chatriot"
   ],
   "description": "Analysis of global simultaneous vehicle demand with ability to merge car groups and hubs",
-  private: true,
+  "private": true,
   "dependencies": {
+    "async": "^0.9.0",
+    "chai": "^2.1.2",
+    "express": "^4.12.3",
+    "mocha": "^2.2.1",
+    "nedb": "^1.1.1",
+    "request": "^2.53.0"
   },
-  "main": "index",
+  "scripts": {
+    "test": "./node_modules/.bin/mocha --reporter spec --timeout 10000"
+  },
+  "main": "index"
 }
-
