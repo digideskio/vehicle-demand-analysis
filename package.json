@@ -1,0 +1,17 @@
+{
+  "name": "lm-vehicle-demand",
+  "version": "0.0.1",
+  "author": {
+    "name": "Louis Chatriot",
+    "email": "louis.chatriot@getlocalmotion.com"
+  },
+  "contributors": [
+    "Louis Chatriot"
+  ],
+  "description": "Analysis of global simultaneous vehicle demand with ability to merge car groups and hubs",
+  private: true,
+  "dependencies": {
+  },
+  "main": "index",
+}
+
