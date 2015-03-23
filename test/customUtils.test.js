@@ -41,15 +41,19 @@ describe('customUtils', function () {
 
     it('No data yields empty array', function () {
       customUtils.parseCSVData(undefined).length.should.equal(0);
+      customUtils.parseCSVData(null).length.should.equal(0);
+      customUtils.parseCSVData('').length.should.equal(0);
+      customUtils.parseCSVData('header').length.should.equal(0);   // Just a header means no data
+    });
+
+    it('Correctly parses CSV data', function () {
+
     });
 
     it('No or empty field will yield an empty datum', function () {
 
     });
 
-    it('Correctly parses CSV data', function () {
-
-    });
 
   });
 
